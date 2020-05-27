@@ -91,36 +91,43 @@ So in this implementation we use the structures which store the data and the add
 ```
 #### Psuedo code for the operations
 1. Adding the element:
-* Check whether the index value is valid or not (which can be checked by maintaining a variable which stores the current size)
-* If the index is valid check whether the place is available or not
-* If place not available then create a new array of double the size and copy the element in new array finally deallocate the memory
-* Now go to the index and move all the element after that index by 1 place
-* Now assign the value to the user given index
+* Check whether the index value is valid or not (which can be checked by maintaining a variable which stores the current size so you dont have to iterate the linked list)
+* If the index is valid then create a node with value and address field as NULL.
+* Iterate through the linklist reach **index-1** node. 
+* Copy the address from that address field of **index-1** node and save the same in newly created nodes address field
+* Now copy the address of the newly created node and store it in the address field of **index-1** node
 * Update the privates variable accordingly
 
 2. Removing the element:
-* Check whether the index value is valid or not
-* If the index is valid check whether the array is sufficiently filled or not
-* If more than 50% of array is empty create a new array of half the size and copy all the elements in the new array
-* Now go to the index and start swapping/ moving the values by one position and delete the value at last position
+* Check the validity of the index
+* If the index is valid then Iterate through the linklist reach **index-1** node. 
+* Now store the value in the address field of that node in some temporary variable we need this value to access the address of **index+1** and **index** node.
+* Replace the value of address filed of **index-1** with the address field of **index** node 
+* Now deallocate the memory assigned to the **index** node
 * Update the privates variable accordingly
 
 3. Modify the element:
 * Check whether the index value is valid or not
-* If the index is valid just go to the index position and update the value
+* Iterate through the linklist reach **index-1** node. 
+* Update the data field of the **index** node using the address field of **index-1** node with a given value.
 
 4. Read the element:
 * Check whether the index value is valid or not
-* If the index is valid then return the value at that index
+* Iterate through the linklist reach **index-1** node. 
+* Return the data field of the **index** node using the address field of **index-1** node.
 
 5. Display the list and variables
-* Iterate through the list and display the elements
+* Iterate through the list till the address stored in the address field of the node is not NULL
 * Set a public method which can return the private variables
 
 6. Reverse the list
-This operation can be done by multiple ways i used a two-pointer technic to implement it. 
-* Write the swap function
-* Assign a pointer to the last and first index and recursively or iteratively update the values.
+There are multiple approaches to reverse the linked list. i will be discussing the optimal approach which reverses the list in **constant space and time**. to reverse the linked list we just need to move the address field of a current node into the address field of the node which 2 location away from the current node.
+* Create three different pointers as prev, cur and next and initialize cur to the head and others to NULL
+* Use while loop with termination condition based on the value of current==NULL
+* Assign next pointer value of cur->next
+* change the value of cur->next with prev
+* Now update the prev and cur pointers with cur and next respectively
+* finally assign the head pointer to prev and we are done.
 
 
 
