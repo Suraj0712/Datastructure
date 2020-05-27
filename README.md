@@ -125,10 +125,7 @@ There are multiple approaches to reverse the linked list. i will be discussing t
 * Create three different pointers as prev, cur and next and initialize cur to the head and others to NULL
 * Use while loop with termination condition based on the value of current==NULL
 * Assign next pointer value of cur->next
-* change the value of cur->next with prev
+* Change the value of cur->next with prev
 * Now update the prev and cur pointers with cur and next respectively
-* finally assign the head pointer to prev and we are done.
+* Finally assign the head pointer to prev and we are done.
 
-
-
-2. 
