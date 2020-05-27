@@ -10,6 +10,11 @@ Data Structures are a specialized means of organizing and storing data in comput
 3. operations and costs
 
 
+There is no such thing as the best data structure and it depends totally on factors like 
+1. Most frequent operation
+2. Memory requirements
+3. Performance(time) requirements
+
 ## List as Abstract data type
 #### Logical view
 1. Store a given number of elements of a data of a given data type
@@ -35,3 +40,23 @@ We can implement this using array. we just have to write the specific operation 
 first we will define an array of **some large** size. When the array is **full** we will create a new larger array, copy the previous array into the new array and free the memory for the previous array. The best policy is to double the size. The drawback of this implementation is large amount of space will be unallocated.
 
 
+##### Linkedlist
+So in this implementation we use the structures which store the data and the address. we arrange them in such a way that the address of the next element is stored in the address field of the current structure. Generally we refer these structures as nodes.we are planning to implement the following operations using the nodes.
+
+```
+1. Add element at start                O(1)
+2. Add element at end                  O(n)
+3. Add element at some position        O(n)
+4. Remove element at start             O(1)
+5. Remove element at end               O(n)
+6. Remove element at some position     O(n)
+7. Modify element at some position     O(n)
+8. Read element at some position       O(n)
+9. Display whole list                  O(n)
+10. Reverse list                       O(n)
+11. Display capacity, size, position   O(1)
+```
+
+
+
+2. 
