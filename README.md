@@ -2,7 +2,7 @@
 
 ### Welcome to the Datastructure.
 
-Data Structures are a specialized means of organizing and storing data in computers in such a way that we can perform operations on the stored data more efficiently. Data structures have a wide and diverse scope of usage across the fields of Computer Science and Software Engineering.
+Data Structures are a specialized means of organizing and storing data in computers in such a way that we can perform operations on the stored data more efficiently. Data structures have a wide and diverse scope of usage across the fields of Computer Science and Software Engineering. Data can be stored sequentially or hierarchically. In these lessons, we are going to study ** List, Stack, Queue, and Tree **data structure. Except for the tree all the data structures are sequential data structure meaning that they store the data sequentially.
 
 ### We talk about data-structure as
 1. Mathematical/Logical models (Abstract view) (Just define the data models and data operations but no implementation)
@@ -260,6 +260,31 @@ To implement the Queue using the LinkedList in constant time we need to use some
 5. Display the list and variables
 * Iterate through the linkedlist and display the elements
 * Set a public method which can return the private variablesss
+
+## Tree as Abstract data type
+#### Logical view
+1. The tree is the data structure where the collection of entities called node is linked together to simulate the hierarchy 
+2. The tree is a nonlinear data structure
+3. The tree can only be traversed in one direction
+4. The tree is a recursive data structure
+
+#### Tree vocabulary
+1. Nodes -> The module we used to store the data and address
+2. Edges -> The link between the nodes
+3. Root -> The node from which the tree is recognized or in other words it is the base node of the tree
+4. Children -> Except the root node the all the nodes are children and every child node has a parent
+5. Parent -> The parent node is a node that is connected to the node and its level in the tree is 1 less than the child node.
+6. Sibling -> Children of the same parent
+7. leaf -> The nodes without children
+8. Depth of node -> Number of edges in the path from the root to a node
+9. Height of node -> Number of edges in **longest** path from the node to the leaf
+10. Height of tree -> height of root node
+11. Binary Tree -> A tree in which each node can at most 2 children
+12. Strict/proper Binary Tree -> Each node can have 2 or 0 children
+13. complete binary tree -> All levels except the last are completely filled and all nodes are as left as possible
+14. Perfect binary tree -> All the levels are completely filled (# of nodes = 2^height -1)
+15. Balanced binary tree -> THe difference between left and right subtree for every node is not more than 1
+16. Binary Search tree -> A binary tree where for each node the value of the nodes in the left subtree is lesser than the value of all the nodes in the right subtree.
 
 
 
