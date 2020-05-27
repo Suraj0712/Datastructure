@@ -7,7 +7,7 @@ Data Structures are a specialized means of organizing and storing data in comput
 ### We talk about data-structure as
 1. Mathematical/Logical models (Abstract view) (Just define the data models and data operations but no implementation)
 2. Implementation (Here we "actually" implement the ADT, there can be multiple ways to implement the ADT)
-3. operations and costs
+3. Operations and Cost
 
 
 There is no such thing as the best data structure and it depends totally on factors like 
@@ -24,6 +24,8 @@ There is no such thing as the best data structure and it depends totally on fact
 #### Implementation
 ##### Array (**List_ADT_using_Array.cpp**)
 We can implement this using array. we just have to write the specific operation on top of the array to get complete functionality. For the sake of current implementation we will use the following operations.
+
+#### Operations
 ```
 1. Add element at start                O(n)
 2. Add element at end                  O(n)
@@ -76,6 +78,7 @@ This operation can be done by multiple ways i used a two-pointer technic to impl
 ##### Linkedlist (**List_ADT_using_linkedlist.cpp**)
 So in this implementation we use the structures which store the data and the address. we arrange them in such a way that the address of the next element is stored in the address field of the current structure. Generally we refer to these structures as nodes. We are planning to implement the following operations using the nodes.
 
+#### Operations
 ```
 1. Add element at start                O(1)
 2. Add element at end                  O(n)
@@ -136,6 +139,7 @@ There are multiple approaches to reverse the linked list. i will be discussing t
 3. We need Push, Pop, Top and IsEmpty functionality for this ADT
 4. Also, we need to perform all these operations in **constant time** O(1)
 
+#### Operations
 ```
 1. Insert the element (Push)                        O(1)
 2. Remove the element (Pop)                         O(n)
@@ -201,6 +205,7 @@ To implement the Stack using the Linked list in constant time we need to use som
 3. We need Push, Pop, Top and IsEmpty functionality for this ADT
 4. Also, we need to perform all these operations in **constant time** O(1)
 
+#### Operations
 ```
 1. Insert the element (Push)                        O(1)
 2. Remove the element (Pop)                         O(n)
@@ -269,41 +274,106 @@ To implement the Queue using the LinkedList in constant time we need to use some
 4. The tree is a recursive data structure
 
 #### Tree vocabulary
-1. Nodes -> The module we used to store the data and address
-2. Edges -> The link between the nodes
-3. Root -> The node from which the tree is recognized or in other words it is the base node of the tree
-4. Children -> Except the root node the all the nodes are children and every child node has a parent
-5. Parent -> The parent node is a node that is connected to the node and its level in the tree is 1 less than the child node.
-6. Sibling -> Children of the same parent
-7. leaf -> The nodes without children
-8. Depth of node -> Number of edges in the path from the root to a node
-9. Height of node -> Number of edges in **longest** path from the node to the leaf
-10. Height of tree -> height of root node
-11. Binary Tree -> A tree in which each node can at most 2 children
-12. Strict/proper Binary Tree -> Each node can have 2 or 0 children
-13. complete binary tree -> All levels except the last are completely filled and all nodes are as left as possible
-14. Perfect binary tree -> All the levels are completely filled (# of nodes = 2^height -1)
-15. Balanced binary tree -> THe difference between left and right subtree for every node is not more than 1
-16. Binary Search tree -> A binary tree where for each node the value of the nodes in the left subtree is lesser than the value of all the nodes in the right subtree.
+1. Nodes ->       The module we used to store the data and address
+2. Edges ->       The link between the nodes
+3. Root ->        The node from which the tree is recognized or in other words it is the base node of the tree
+4. Children ->    Except the root node the all the nodes are children and every child node has a parent
+5. Parent ->      The parent node is a node that is connected to the node and its level in the tree is 1 less than the child node.
+6. Sibling ->     Children of the same parent
+7. leaf ->        The nodes without children
+8. Depth of node ->    Number of edges in the path from the root to a node
+9. Height of node ->   Number of edges in **longest** path from the node to the leaf
+10. Height of tree ->  height of root node
+11. Binary Tree ->     A tree in which each node can at most 2 children
+12. Strict/proper Binary Tree ->  Each node can have 2 or 0 children
+13. complete binary tree ->       All levels except the last are completely filled and all nodes are as left as possible
+14. Perfect binary tree ->        All the levels are completely filled (# of nodes = 2^height -1)
+15. Balanced binary tree ->       The difference between left and right subtree for every node is not more than 1
+16. Binary Search tree ->         A binary tree where for each node the value of the nodes in the left subtree is lesser than the value of all the nodes in the right subtree.
 
+#### Operations
+```
+1. Insert the element                   O(log(n))
+2. search the element                   O(log(n)) 
+3. Remove the element                   O(log(n))
+4. Find Max                             O(log(n))
+5. Find Min                             O(log(n))
+6. Find Height                          O(log(n))
+7. Level order traversal                O(n)
+8. Pre order traversal                  O(n)
+9. In order traversal                   O(n)
+10. Post order traversal                O(n)
+```
 
+** All the operation can be performed using recursion or iterative approach**
 
+#### Implementation (BST)
+##### Structure (**Tree_implementation.cpp**)
 
+For the sake of simplicity, we are considering the binary search tree for the implementation and we are not considering the duplicate values during the tree creation. The same idea can be extended to implement any kind of tree. To implement the tree we need to create custom data modules called nodes which is the building block for the tree. The purpose of the node is to store the data and the address of its children and the purpose can be achieved by creating the node as a c++ structures. The advantage of using the tree data structure is a significant improvement in the insertion and search operations.
 
+#### Psuedo code for the operations
+1. Insert:
+* If the tree is empty i.e. head is pointing to the NULL value we will create a new node and will point the head to the new node.
+* Else will check for the data value and based on the data value we will try to navigate through the tree until we reach a node that is pointing to the NULL.
+* As this will happen in recursion the program will eventually find the NULL node and at that time we will execute step 1.
+* Iterative approach for the same can be implemented using a while loop to search the parent node and then we will execute step 1.
 
+2. Search:
+* Search operation is also similar to the insert operation except here we dont create a new node.
+* We will use recursion or iterative algorithm to navigate through the tree based on the data part of the node.
+* Will execute these steps until we find the node or come across a NULL node.
 
+3. Remove:
+* The remove operation is a bit tricky and we can perform this operation in more than one way.
+* The remove operation first required us to locate the node in the tree.
+* Now as we need to remove the element we need to replace it with some element that will maintain the BST structure intact.
+* This we can do by replacing the data value of the node by **largest value from the left subtree or smallest value from the right subtree**
+* Once we replace the data part of the Node we also need to delete the node which we used for the replacement.
 
+4. Find Max
+* Finding maximum is easy and can be achieved by recursion and iterative methods
+* We know that in the binary tree all nodes on the left side will be smaller than the head so to find the largest element we just need to find the rightmost element in the tree
 
+5. Find Min
+* The minimum element in the binary tree will be a leftmost element it can be found by iterating on the left side of the tree until we reach the leaf node.
 
+6. Find Height
+* We can find the height of the tree recursively by finding the height of the left and right subtree.
+* We will consider only the max value between left and right subtree
+* Will stop the recursion call when the node is a leaf node
+* As we know the height of the root when its empty is 0 so we will return -1 as during every recursion call we will update the height by +1
 
+#### Tree traversal
+7. Level order traversal
+In the level order traversal, we visit the nodes of the tree level by level. Generally while traveling the node we travel from left to right. This traversal is also called a breadth-first search as we explore the tree horizontally. We can't travel the node just by storing the address of the current node as we will lose the information about other nodes. We will use **Queue** data structure to achieve the level order traversal.
 
+* First, we will create to store the nodes
+* Every time we will remove the node we will append the tree by its children
+* The algorithm will run until the queue is empty. meaning that we have visited all the nodes
 
+The next three algorithms are the variations of the depth-first search. The algorithms are called depth-first search because it explores the tree vertically. The only difference in the following three algorithms is in the order of reading the nodes. Conventionally we visit the left subtree before the right subtree which gives us three different possibilities fo the depth-first traversal.
 
+8. Pre Order traversal (DLR)
+In this traversal, we will first visit the node and read the data then we will explore the left subtree, and then we will explore the right subtree. Recursion is used for the implementation of this algorithm as the code is simple and easy to follow. In this traversal, we visit the node from the Root to leaf manner.
 
+* We will first we will visit the node and read the data associated with the node.
+* We will recursively call the preorder traversal for the left subtree
+* Then we will recursively call the preorder traversal for the left subtree
+* The algorithm will be terminated when we reach NULL node
 
+9. In Order traversal (LDR)
+In this traversal, we will first explore the left subtree then we will visit the node and read the data. Finally, we will explore the right subtree. Recursion is used for the implementation of this algorithm as the code is simple and easy to follow. The beauty of this traversal that it returns the sorted list of elements.
 
+* We will recursively call the inorder traversal for the left subtree 
+* Then we will visit the node and read the data associated with the node.
+* Finally, we will recursively call the preorder traversal for the left subtree
+* The algorithm will be terminated when we reach NULL node
 
+10. Post Order traversal (LRD)
+In this traversal, we will first explore the left subtree then we will explore the right subtree. Finally, we will visit the node and read the data. The algorithm will traverse the tree from leaf to root manner.
 
-
- 
-
+* We will recursively call the inorder traversal for the left subtree
+* Then we will recursively call the preorder traversal for the left subtree 
+* Finally, we will visit the node and read the data associated with the node.
+* The algorithm will be terminated when we reach NULL node
