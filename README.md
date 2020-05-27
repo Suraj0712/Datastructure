@@ -131,15 +131,15 @@ There are multiple approaches to reverse the linked list. i will be discussing t
 
 ## Stack as Abstract data type
 #### Logical view
-1. Stack is a collection with property that an item in stack can be inserted or remove from the one end generally refered as a top
-2. Stack is also refered as a Last In First Out (LIFO). That means the most recently added item in the stack has to go out first
-3. We need Push, Pop, Top and IsEmpty fucntionality for this ADT
-4. Also we need to perform all this operations in **constant time** O(1)
+1. The stack is a collection with a property that an item in a stack can be inserted or removed from the one end generally referred to as a top
+2. The stack is also referred to as a Last In First Out (LIFO). That means the most recently added item in the stack has to go out first
+3. We need Push, Pop, Top and IsEmpty functionality for this ADT
+4. Also, we need to perform all these operations in **constant time** O(1)
 
 ```
 1. Insert the element (Push)                        O(1)
 2. Remove the element (Pop)                         O(n)
-3. Return the value of accesible element (Top)      O(1)
+3. Return the value of accessible element (Top)     O(1)
 4. Check for the stack status (IsEmpty)             O(1)
 5. Display stack                                    O(n)
 ```
@@ -194,21 +194,72 @@ To implement the Stack using the Linked list in constant time we need to use som
 * Iterate through the linkedlist and display the elements
 * Set a public method which can return the private variables
 
+## Queue as Abstract data type
+#### Logical view
+1. The queue is a collection with a property that an item can be inserted from only one position called as rear and removed from one position called as a front
+2. The queue is also referred to as a First In First Out (FIFO). That means the most recently added item in the stack has to go out last
+3. We need Push, Pop, Top and IsEmpty functionality for this ADT
+4. Also, we need to perform all these operations in **constant time** O(1)
 
+```
+1. Insert the element (Push)                        O(1)
+2. Remove the element (Pop)                         O(n)
+3. Return the value of accessible element (Front)   O(1)
+4. Check for the stack status (IsEmpty)             O(1)
+5. Display stack                                    O(n)
+```
+#### Implementation 
+##### Array (**Queue_ADT_using_Array_Linkedlist.cpp**)
+We can implement the queue ADT simply by creating the array of some size and then updating the front and rear values accordingly. The problem with this implementation comes when the rear index reaches the max size of an array. Now although the space is available we won't be able to perform the required operations. The solution to this is to use a **Circular Buffer**. In the case of the circular buffer we will create a circular array where the end of the array is logically connected to the front of the array. Which can be achieved by changing the index update rule.
 
+**index update: (next index = (current index+1)%size of array)**
 
+#### Psuedo code for the operations
+1. Push:
+* Check whether space is available or not and return the exception if it's full. To check that we will see the value of the next index from rear and front. **(rear+1)/n == front** 
+* If the array is empty we need to update the front and rear to the same value
+* In other cases just update the rear index value at rear index
+* Update top and the privates variable accordingly
 
+2. Pop:
+* Check whether the array is empty or not. If the array is empty return the exception 
+* If there is only one element in the array update the replace the value with NULL and update both front and back to -1
+* In other cases just update the make the value at front index as NULL and update the front index
+* Update top and the privates variable accordingly
 
+3. Front:
+* Return the value stored at the front index of a circular array
 
+4. isEmpty:
+* Return the value based on the front and rear variable
 
+5. Display the list and variables
+* Iterate through the array from front to rear and display the elements
+* Set a public method which can return the private variables
 
+#### Linkedlist (**Queue_ADT_using_Array_Linkedlist.cpp**)
+To implement the Queue using the LinkedList in constant time we need to use some clever tricks. The identity of the link list is the address of the first node and we will use this for removal or pop operation. in order to perform the push operation in the constant time we need to store the address of the last node in the LinkedList. so in order to implement the Queue in constant time we will need two variables that store the address of the first and last node in the linked list.
 
+#### Psuedo code for the operations
+1. Push:
+* Create the node with the data part filled with value and address part with NULL
+* UPdate the address stored in the address field of a front node with the address of the newly created node
+* Update front with the address of the new node
 
+2. Pop:
+* Store the value of head in a temp variable. Update the head value to the address stored in the address part of the head node
+* Deallocate the memory by deleting the head node
+* Update rear with the temp variable
 
+3. Front:
+* Return the value stored at the front node
 
+4. isEmpty:
+* Return the value based on the value of front and rear
 
-
-
+5. Display the list and variables
+* Iterate through the linkedlist and display the elements
+* Set a public method which can return the private variablesss
 
 
 
